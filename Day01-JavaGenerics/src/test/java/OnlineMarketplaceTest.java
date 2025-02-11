@@ -7,19 +7,19 @@ import java.util.List;
 public class OnlineMarketplaceTest {
 
     @Test
-    void productCategoryTest(){
-        String name1 = "fiction"; //book category
-        String name2 = "automatic"; //gadget category
-        String name3 = "formal"; //clothing category
+    void productCategoryTest_Pass(){
+        String bookCategoryName = "fiction"; //book category
+        String gadgetCategoryName = "automatic"; //gadget category
+        String clothingCategoryName = "formal"; //clothing category
 
-        double price1 = 10.0; // book price
-        double price2 = 20.0; // gadget price
-        double price3 = 30.0; //cloth price
+        double bookPrice = 10.0; // book price
+        double gadgetPrice = 20.0; // gadget price
+        double clothingPrice = 30.0; //cloth price
 
         Product<Category> products = new Product<>();
-        products.addProduct(new BookCategory(name1, price1));
-        products.addProduct(new GadgetCategory(name2, price2));
-        products.addProduct(new ClothingCategory(name3, price3));
+        products.addProduct(new BookCategory(bookCategoryName, bookPrice));
+        products.addProduct(new GadgetCategory(gadgetCategoryName, gadgetPrice));
+        products.addProduct(new ClothingCategory(clothingCategoryName, clothingPrice));
 
         //products list size check
         assertEquals(3, products.getProducts().size());
@@ -33,5 +33,24 @@ public class OnlineMarketplaceTest {
         assertEquals(10.0, products.getProducts().get(0).getPrice(), "Prices should match");
         assertEquals(20.0, products.getProducts().get(1).getPrice(), "Prices should match");
         assertEquals(30.0, products.getProducts().get(2).getPrice(), "Prices should match");
+    }
+
+    @Test
+    void ProductCategoryTest_Fail(){
+        class DummyCategory{
+            String name;
+            double price;
+            public DummyCategory(String name, double price){
+                this.name = name;
+                this.price = price;
+            }
+        }
+        String bookCategoryName = "fiction"; //book category
+        double bookPrice = 10.0; // book price
+        Product<Category> products = new Product<>();
+
+        products.addProduct(new BookCategory(bookCategoryName, bookPrice));
+        //products.addProduct(new DummyCategory("dummy_name", 0.0)); this will throw compile time error as dummy category does not extends
+        // Category class
     }
 }
