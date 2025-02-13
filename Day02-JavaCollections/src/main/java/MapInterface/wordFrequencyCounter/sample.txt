@@ -1,0 +1,4 @@
+Word Frequency Counter
+Read a text file and count the frequency of each word using a HashMap. Ignore case and punctuation.
+Example:
+Input: "Hello world, hello Java!" → Output: {hello=2, world=1, java=1}
