@@ -3,9 +3,10 @@ package Regex.AdvancedProblems.ValidateCreditCardNumber;
 import java.util.regex.Pattern;
 
 public class ValidateCreditCard {
+
     public static boolean isValidCreditCard(String cardNumber) {
-        String visaPattern = "^4\\d{15}$"; //for visacards
-        String masterPattern = "^5\\d{15}"; //for mastercards
+        String visaPattern = "^4\\d{15}$";
+        String masterPattern = "^5\\d{15}$";
 
         return Pattern.matches(visaPattern, cardNumber) || Pattern.matches(masterPattern, cardNumber);
     }
@@ -21,7 +22,7 @@ public class ValidateCreditCard {
                 "4000000000000000"
         };
 
-        for(String card: testCards) {
+        for (String card : testCards) {
             System.out.println(card + " -> " + (isValidCreditCard(card) ? "valid" : "invalid"));
         }
     }

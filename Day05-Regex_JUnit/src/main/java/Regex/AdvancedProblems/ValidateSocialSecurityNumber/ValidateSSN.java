@@ -1,15 +1,12 @@
 package Regex.AdvancedProblems.ValidateSocialSecurityNumber;
+
 import java.util.regex.*;
 
 public class ValidateSSN {
 
-    public static boolean isValidSSN(String ssn){
+    public static boolean isValidSSN(String ssn) {
         String regex = "^(\\d{3}-\\d{2}-\\d{4})$";
-
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(ssn);
-
-        return matcher.matches();
+        return Pattern.matches(regex, ssn);
     }
 
     public static void main(String[] args) {
@@ -23,7 +20,7 @@ public class ValidateSSN {
                 "000-12-3456"
         };
 
-        for(String ssn: textSSNs){
+        for (String ssn : textSSNs) {
             System.out.println(ssn + " -> " + (isValidSSN(ssn) ? "valid" : "invalid"));
         }
     }
